@@ -1,0 +1,14 @@
+{
+  "name": "coc-scanner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "mongoose": "^5.11.15",
+    "node-schedule": "^2.0.0"
+  },
+  "devDependencies": {
+    "@sendgrid/mail": "^7.4.2"
+  }
+}
