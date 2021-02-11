@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/coc-api')
     .then(() => console.log('Connected to MongoDB...'))
     .catch(() => console.log('Could not connected to MongoDB...'))
 
-const job = schedule.scheduleJob('50 23 * * *', async () => {
+const job = schedule.scheduleJob('*/10 * * * * *', async () => {
     console.log('schedule');
     const p = await getPlayerInformation('C002PGGP');
     await savePlayer(p);
@@ -25,14 +25,16 @@ const getPlayerInformation = async (playerId) => {
             }
         })
 
-        const actualPlayerInformation = new Player(response.data);
-        actualPlayerInformation.compareWithTheLast();
-
-        // return response.data;
+        return response.data;
 
     } catch (e) {
         console.error(e);
     }
+}
+
+const compareData = async (player) => {
+    const actualPlayerInformation = new Player(player);
+    actualPlayerInformation.compareWithTheLast();
 }
 
 const savePlayer = async (player) => {
