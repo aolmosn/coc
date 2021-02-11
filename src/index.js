@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/coc-api')
     .then(() => console.log('Connected to MongoDB...'))
     .catch(() => console.log('Could not connected to MongoDB...'))
 
-const job = schedule.scheduleJob('*/10 * * * * *', async () => {
+const job = schedule.scheduleJob('50 23 * * *', async () => {
     console.log('schedule');
     const p = await getPlayerInformation('C002PGGP');
     await savePlayer(p);
@@ -57,7 +57,7 @@ const sendmail = (datos) => {
         from: 'andres.olmos.n@gmail.com', // Change to your verified sender
         subject: 'Datos clash of clans guardados ',
         text: 'Datos guardados',
-        html: datos,
+        html: '<p>Se guardo la información de hoy en la BD</p>',
     }
     sgMail
         .send(msg)
